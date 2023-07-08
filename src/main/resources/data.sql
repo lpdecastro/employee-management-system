@@ -1,6 +1,6 @@
 USE `employee_directory`;
 
-INSERT INTO `employee`
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `email`)
 VALUES (1, "testFirstName1", "testLastName1", "test1@yopmail.com"),
        (2, "testFirstName2", "testLastName2", "test2@yopmail.com"),
        (3, "testFirstName3", "testLastName3", "test3@yopmail.com"),
