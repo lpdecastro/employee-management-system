@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/employees")
@@ -45,6 +44,12 @@ public class EmployeeController {
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         employeeService.save(employee);
+        return "redirect:/employees/list";
+    }
+
+    @GetMapping("/delete")
+    public String deleteEmployee(@RequestParam("id") int id) {
+        employeeService.deleteById(id);
         return "redirect:/employees/list";
     }
 }
