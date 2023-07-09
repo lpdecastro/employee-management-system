@@ -37,16 +37,20 @@
         </p>
 
         <!-- Leadership Meeting -->
-        <p>
-            <a th:href="@{/leaders}">Leadership Meeting</a>
-            (Only for Managers)
-        </p>
+        <div sec:authorize="hasRole('MANAGER')">
+            <p>
+                <a th:href="@{/leaders}">Leadership Meeting</a>
+                (Only for Managers)
+            </p>
+        </div>
 
         <!-- IT Systems Meeting -->
-        <p>
-            <a th:href="@{/systems}">IT Systems Meeting</a>
-            (Only for Admins)
-        </p>
+        <div sec:authorize="hasRole('ADMIN')">
+            <p>
+                <a th:href="@{/systems}">IT Systems Meeting</a>
+                (Only for Admins)
+            </p>
+        </div>
     </div>
 
     <!-- Logout button -->
