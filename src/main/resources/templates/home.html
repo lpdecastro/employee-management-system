@@ -29,9 +29,23 @@
     <hr>
 
     <!-- Display available links -->
+    <h3>Available Links</h3>
     <div>
+        <!-- Employees List -->
         <p>
             <a th:href="@{/employees/list}">Employees List</a>
+        </p>
+
+        <!-- Leadership Meeting -->
+        <p>
+            <a th:href="@{/leaders}">Leadership Meeting</a>
+            (Only for Managers)
+        </p>
+
+        <!-- IT Systems Meeting -->
+        <p>
+            <a th:href="@{/systems}">IT Systems Meeting</a>
+            (Only for Admins)
         </p>
     </div>
 
