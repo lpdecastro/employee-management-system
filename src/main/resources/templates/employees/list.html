@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head>
     <!-- Required meta tags -->
     <meta charset="UTF-8">
@@ -17,9 +17,11 @@
     <hr>
 
     <!-- Button for Add Employee -->
-    <a th:href="@{/employees/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
-        Add Employee
-    </a>
+    <div sec:authorize="hasRole('MANAGER')">
+        <a th:href="@{/employees/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
+            Add Employee
+        </a>
+    </div>
 
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
@@ -40,15 +42,19 @@
             <!-- Button for Action -->
             <td>
                 <!-- Update Action -->
-                <a th:href="@{/employees/showFormForUpdate(id=${employee.id})}" class="btn btn-info btn-sm">Update</a>
+                <a sec:authorize="hasRole('MANAGER')" th:href="@{/employees/showFormForUpdate(id=${employee.id})}"
+                   class="btn btn-info btn-sm">Update</a>
 
                 <!-- Delete Action -->
-                <a th:href="@{/employees/delete(id=${employee.id})}" class="btn btn-danger btn-sm"
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{/employees/delete(id=${employee.id})}"
+                   class="btn btn-danger btn-sm"
                    onclick="if (!confirm('Are you sure you want to delete this employee?')) return false">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
+
+    <a th:href="@{/}">Back to Home Page</a>
 </div>
 </body>
 </html>
