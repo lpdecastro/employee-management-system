@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Boostrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>EMS Home Page</title>
+</head>
+<body>
+<div class="container">
+    <h2>Employee Management System (EMS) Home Page</h2>
+    <hr>
+
+    <p>Welcome to EMS home page!</p>
+    <hr>
+
+    <!-- Display user's name and role(s) -->
+    <p>
+        User: <span sec:authentication="principal.username"></span>
+    </p>
+    <p>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+    </p>
+    <hr>
+
+    <!-- Display available links -->
+    <div>
+        <p>
+            <a th:href="@{/employees/list}">Employees List</a>
+        </p>
+    </div>
+
+    <!-- Logout button -->
+    <form action="#" method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout" class="btn btn-outline-primary mt-2">
+    </form>
+</div>
+</body>
+</html>
